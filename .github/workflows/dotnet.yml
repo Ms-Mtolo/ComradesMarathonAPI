@@ -34,11 +34,11 @@ jobs:
 
       # 4. Compile the solution in Release mode
       - name: Build
-        run: dotnet build ComradesMarathonAPI.sln --no-restore --configuration Release
+        run: dotnet build ComradesMarathonAPI.slnx --no-restore --configuration Release
 
       # 5. Run all xUnit tests
       - name: Run tests
-        run: dotnet test ComradesMarathonAPI.sln --no-build --configuration Release --verbosity normal
+        run: dotnet test ComradesMarathonAPI.slnx --no-build --configuration Release --verbosity normal
 on:
   push:
     branches: [ "master" ]
