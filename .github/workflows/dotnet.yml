@@ -1,0 +1,64 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - '**'          # every branch
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build-and-test:
+    name: Build and run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Install the .NET 8 SDK
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      # 3. Restore NuGet packages for the whole solution
+      - name: Restore dependencies
+        run: dotnet restore ComradesMarathonAPI.slnx
+
+      # 4. Compile the solution in Release mode
+      - name: Build
+        run: dotnet build ComradesMarathonAPI.sln --no-restore --configuration Release
+
+      # 5. Run all xUnit tests
+      - name: Run tests
+        run: dotnet test ComradesMarathonAPI.sln --no-build --configuration Release --verbosity normal
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
