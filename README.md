@@ -486,5 +486,7 @@ so the README renders it inline.
 This project was produced for the **PROG6212** module at **The Independent Institute
 of Education (Pty) Ltd**. See `LICENSE.txt` for details.
 
+<img width="602" height="296" alt="image" src="https://github.com/user-attachments/assets/16b2f286-1ce2-4830-8af3-1d4b29f2faa4" />
+
 
 Youtube link: https://youtu.be/UYkuYjgpXkI?si=SQdBimekWYpuvx0C
